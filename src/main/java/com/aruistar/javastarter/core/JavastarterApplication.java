@@ -1,4 +1,4 @@
-package com.aruistar.javastarter.javastarter;
+package com.aruistar.javastarter.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
