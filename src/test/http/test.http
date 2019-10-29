@@ -1,0 +1,14 @@
+GET http://127.0.0.1:8080/now
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8080/plus
+Content-Type: application/json
+
+{
+  "a": 10,
+  "b": 5
+}
+
+###
