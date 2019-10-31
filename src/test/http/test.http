@@ -12,3 +12,22 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8080/login
+Content-Type: application/json
+user: admin
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+###
+GET http://127.0.0.1:8080/whoami
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/showHeader
+Accept: application/json
+myHeader: test
+
+###
