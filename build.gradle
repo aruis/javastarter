@@ -1,8 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
-	id 'groovy'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'groovy'
 }
 
 group = 'com.aruistar.javastarter'
@@ -10,17 +10,20 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation "org.codehaus.groovy:groovy:2.5.8"
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    implementation "org.codehaus.groovy:groovy:2.5.8"
+    implementation "org.codehaus.groovy:groovy-sql:2.5.8"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

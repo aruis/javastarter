@@ -1,16 +1,20 @@
-package com.aruistar.javastarter.core;
+package com.aruistar.javastarter.core
 
-import org.springframework.web.bind.annotation.*;
+import groovy.sql.Sql
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.*
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
+import javax.servlet.http.HttpServletRequest
+import java.util.concurrent.atomic.AtomicLong
 
 @RestController
 public class GreetingController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+
+    @Autowired
+    Sql sql
 
     @RequestMapping("/greeting")
     public Greeting greeting(
@@ -46,6 +50,11 @@ public class GreetingController {
     @GetMapping("/whoami")
     public String whoami(@SessionAttribute String user) {
         return user;
+    }
+
+    @GetMapping("/testsql")
+    def testsql() {
+        return sql.firstRow("select 1 as a_name")
     }
 
 }
