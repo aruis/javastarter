@@ -1,5 +1,6 @@
 package com.aruistar.javastarter.core
 
+import com.aruistar.javastarter.core.service.CommonService
 import groovy.sql.Sql
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -15,6 +16,9 @@ public class GreetingController {
 
     @Autowired
     Sql sql
+
+    @Autowired
+    CommonService commonService
 
     @RequestMapping("/greeting")
     public Greeting greeting(
@@ -54,7 +58,7 @@ public class GreetingController {
 
     @GetMapping("/testsql")
     def testsql() {
-        return sql.firstRow("select 1 as a_name")
+        sql.rows("select now() as t, 1 as a union  select now()+'1 hour'::interval as t ,2 as a ")
     }
 
 }
