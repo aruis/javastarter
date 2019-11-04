@@ -25,12 +25,12 @@ dependencies {
     implementation "org.codehaus.groovy:groovy-json:2.5.8"
     implementation "org.codehaus.groovy:groovy-xml:2.5.8"
 
-    testCompile "org.codehaus.groovy:groovy-test:2.5.8"
-//    implementation "org.codehaus.groovy:groovy-sql:2.5.8"
+
     compile group: 'org.codehaus.groovy', name: 'groovy-dateutil', version: '2.5.8'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
 
+    testCompile "org.codehaus.groovy:groovy-test:2.5.8"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
