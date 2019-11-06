@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+</head>
+<body>
+
+<form>
+    username:<br>
+    <input id="username" type="text" name="username">
+    <br>
+    password:<br>
+    <input id="password" type="text" name="password">
+    <br><br>
+    <input id="btn" type="button" value="Submit">
+</form>
+
+</body>
+<script>
+    $("#btn").click(function () {
+        var username = $("#username").val()
+        var password = $("#password").val()
+
+        $.ajax({
+            type: "post",
+            url: '/login',
+            data: JSON.stringify({
+                username: username,
+                password: password
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result)
+                window.location = '/'
+            },
+            error: function () {
+                console.log("登录失败")
+            }
+        });
+
+    })
+</script>
+</html>

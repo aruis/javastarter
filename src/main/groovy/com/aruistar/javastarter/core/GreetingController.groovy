@@ -40,7 +40,7 @@ public class GreetingController {
     }
 
     @PostMapping("/login")
-    public void login(@RequestBody Map body, HttpServletRequest request) {
+    public def login(@RequestBody Map body, HttpServletRequest request) {
         String username = (String) body.get("username");
         String password = (String) body.get("password");
 
@@ -48,7 +48,8 @@ public class GreetingController {
             throw new RuntimeException("用户名密码错误");
         }
 
-        request.getSession().setAttribute("user", username);
+        request.getSession().setAttribute("user", username)
+        return [status: 200]
     }
 
     @GetMapping("/whoami")
