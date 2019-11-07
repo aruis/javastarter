@@ -1,33 +1,35 @@
 package com.aruistar.javastarter.core
 
+import com.alibaba.druid.pool.DruidDataSource
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.sql.Sql
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.jdbc.DataSourceBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Scope
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 
+import javax.sql.DataSource
 import java.text.SimpleDateFormat
 
 @SpringBootApplication
-public class JavastarterApplication {
+class JavastarterApplication {
 
-    @Value('${app.datasource.url}')
-    String url
-    @Value('${app.datasource.username}')
-    String username
-    @Value('${app.datasource.password}')
-    String password
-
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(JavastarterApplication.class, args);
     }
 
     @Bean
+    @ConfigurationProperties("app.datasource")
+    DataSource dataSource() {
+        return DataSourceBuilder.create().type(DruidDataSource.class).build()
+    }
+
+    @Bean
     Sql sql() {
-        return Sql.newInstance(url, username, password, "org.postgresql.Driver")
+        return new Sql(dataSource())
     }
 
     @Bean

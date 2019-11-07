@@ -6,4 +6,8 @@ app:
     url: jdbc:postgresql://127.0.0.1:54326/ark
     username: postgres
     password: password
-    pool-size: 30
+    max-active: 30
+  auth:
+    login: /login.html
+    whitelist:
+      - /login
