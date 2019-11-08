@@ -11,3 +11,4 @@ app:
     login: /login.html
     whitelist:
       - /login
+      - /error
